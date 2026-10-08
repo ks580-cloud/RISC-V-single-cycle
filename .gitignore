@@ -3,3 +3,4 @@ build/
 *.vvp
 alu_sim
 *.log
+imm_sim
