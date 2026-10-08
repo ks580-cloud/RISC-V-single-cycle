@@ -1,0 +1,5 @@
+build/
+*.vcd
+*.vvp
+alu_sim
+*.log
