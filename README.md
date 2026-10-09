@@ -8,6 +8,6 @@ A single-cycle RISC-V (RV32I subset) processor written in SystemVerilog. The des
 - [x] Immediate generator (see /imm_gen)
 - [x] Control unit (see /control_unit)
 - [x] Register file (see /register)
-- [ ] Data memory
+- [x] Data memory (see /data_mem)
 - [x] PC logic (see /pc_top)
 - [ ] Top-level integration (to be simulated in Vivado)

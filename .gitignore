@@ -7,3 +7,4 @@ imm_sim
 reg_sim
 control_tb_sim
 pc_sim
+data_mem_sim
