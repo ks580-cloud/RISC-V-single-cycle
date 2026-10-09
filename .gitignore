@@ -5,3 +5,4 @@ alu_sim
 *.log
 imm_sim
 reg_sim
+control_tb_sim
