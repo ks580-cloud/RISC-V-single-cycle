@@ -314,6 +314,30 @@ errors = 0
 
 All 12 tests pass. The compile printed no warnings or errors, and the exit code was 0.
 
+### Terminal screenshot
+
+![Simulation log](log_result.png)
+
+The same run in the terminal: 12 `PASS` lines and `errors = 0`.
+
+### Waveform
+
+![Simulation waveform](waveform_result.png)
+
+The waveform (viewed in GTKWave from `tb.vcd`) shows `ins1` and eight of the control outputs: `alu_op`, `alu_src`, `branch`, `jalr`, `jump`, `mem_read`, `mem_write` and `reg_write`. `mem_to_reg` is not in this view. Reading it from left to right:
+
+- **Start:** `ins1` is `xxxxxxxx` (undriven) for the first 2 time units. Every output is still `0`, which is the "undriven input falls to defaults" behavior from section 6.
+- **ADD to XOR (`002081B3` to `0020C1B3`):** `alu_op` steps `0, 1, 2, 3, 4` (ADD, SUB, AND, OR, XOR). `reg_write` goes high and stays high.
+- **ADDI (`00500093`):** `alu_src` goes high (immediate operand).
+- **LW (`00002203`):** `mem_read` pulses high. `alu_src` and `reg_write` stay high.
+- **SW (`00202023`):** `mem_write` pulses high, and `reg_write` drops to `0` (a store writes no register).
+- **BEQ (`00410463`):** `branch` pulses high, `alu_op` becomes `1` (SUB), and `alu_src` is `0`.
+- **JAL (`008003EF`):** `jump` pulses high and `reg_write` goes high.
+- **JALR (`008304E7`):** `jalr` pulses high, `alu_src` goes high and `reg_write` stays high.
+- **ILLEGAL (`FFFFFFFF`):** every signal returns to `0`.
+
+The time axis is labelled "sec" only because the testbench has no `` `timescale `` line. The values are simulation time units, and each instruction is held for a few of them.
+
 ---
 
 ## Findings
