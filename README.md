@@ -7,7 +7,7 @@ A single-cycle RISC-V (RV32I subset) processor written in SystemVerilog. The des
 - [x] ALU (see [`alu/`](alu))
 - [x] Immediate generator (see /imm_gen)
 - [ ] Control unit
-- [ ] Register file
+- [x] Register file (see /register)
 - [ ] Data memory
 - [ ] PC logic
 - [ ] Top-level integration (to be simulated in Vivado)

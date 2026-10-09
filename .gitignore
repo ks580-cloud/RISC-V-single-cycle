@@ -4,3 +4,4 @@ build/
 alu_sim
 *.log
 imm_sim
+reg_sim
